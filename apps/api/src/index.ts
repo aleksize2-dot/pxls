@@ -1,3 +1,4 @@
+import { serve } from '@hono/node-server'
 import { Hono } from 'hono'
 import { cors } from 'hono/cors'
 import { logger } from 'hono/logger'
@@ -12,6 +13,7 @@ app.use('*', cors())
 app.use('*', logger())
 
 // Health check
+app.get('/', (c) => c.json({ ok: true, service: 'pxls-api', ts: Date.now() }))
 app.get('/health', (c) => c.json({ ok: true, ts: Date.now() }))
 
 // Packages
@@ -45,7 +47,6 @@ app.post('/api/generate', async (c) => {
 
 // Generation status
 app.get('/api/generations/:id', async (c) => {
-  const { id } = c.req.param()
   // TODO: query DB
 
   return c.json<ApiResponse>({
@@ -69,4 +70,8 @@ app.get('/api/user', async (c) => {
   }, 501)
 })
 
-export default app
+console.log(`🚀 PXLS API starting on :${env.PORT}`)
+serve({
+  fetch: app.fetch,
+  port: env.PORT,
+})
