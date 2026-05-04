@@ -1,0 +1,23 @@
+{
+  "name": "pxls",
+  "private": true,
+  "description": "AI Image & Video Generator - Telegram Mini App",
+  "scripts": {
+    "dev": "turbo dev",
+    "build": "turbo build",
+    "lint": "turbo lint",
+    "typecheck": "turbo typecheck"
+  },
+  "workspaces": [
+    "apps/*",
+    "packages/*"
+  ],
+  "packageManager": "pnpm@10.8.0",
+  "engines": {
+    "node": ">=22"
+  },
+  "devDependencies": {
+    "turbo": "^2.5.0",
+    "typescript": "^5.8.0"
+  }
+}
