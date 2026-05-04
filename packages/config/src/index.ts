@@ -13,6 +13,9 @@ export const envSchema = z.object({
   // Telegram
   TG_BOT_TOKEN: z.string().min(1),
 
+  // Ngrok tunnel (dev)
+  NGROK_URL: z.string().url().optional(),
+
   // App
   PORT: z.coerce.number().default(3001),
   NODE_ENV: z.enum(['development', 'production', 'test']).default('development'),

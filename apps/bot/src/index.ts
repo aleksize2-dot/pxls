@@ -6,7 +6,7 @@ const bot = new Telegraf(env.TG_BOT_TOKEN)
 
 bot.start(async (ctx) => {
   const ref = ctx.payload // referral code
-  const webAppUrl = 'https://t.me/pxlesbot/app'
+  const webAppUrl = env.NGROK_URL || 'https://t.me/pxlesbot/app'
 
   await ctx.reply(
     '✨ <b>PXLS — AI Image & Video Generator</b>\n\n'
