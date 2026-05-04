@@ -5,13 +5,14 @@
   "type": "module",
   "scripts": {
     "dev": "vite",
-    "build": "tsc -b && vite build",
+    "build": "vite build",
     "preview": "vite preview",
     "typecheck": "tsc --noEmit",
     "lint": "biome check src/"
   },
   "dependencies": {
     "@pxls/shared": "workspace:*",
+    "@pxls/config": "workspace:*",
     "@tma.js/sdk": "^1.4.0",
     "@tma.js/sdk-react": "^1.0.0",
     "react": "^19.1.0",

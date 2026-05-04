@@ -82,6 +82,9 @@ importers:
 
   apps/tma:
     dependencies:
+      '@pxls/config':
+        specifier: workspace:*
+        version: link:../../packages/config
       '@pxls/shared':
         specifier: workspace:*
         version: link:../../packages/shared

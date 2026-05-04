@@ -8,7 +8,10 @@ const bot = new Telegraf(env.TG_BOT_TOKEN)
 bot.start(async (ctx) => {
   const ref = ctx.payload // referral code
   // Use ngrok tunnel in dev, or TMA deep link in prod
-const webAppUrl = env.NGROK_URL || 'https://t.me/pxlesbot/app'
+  let webAppUrl = 'https://xpocg-95-91-218-96.run.pinggy-free.link'
+  if (webAppUrl.includes('ngrok-free.dev')) {
+    webAppUrl += '?ngrok-skip-browser-warning=true'
+  }
 
   // Upsert user in Supabase
   const { id: telegram_id, username, first_name, last_name } = ctx.from
@@ -55,7 +58,7 @@ const webAppUrl = env.NGROK_URL || 'https://t.me/pxlesbot/app'
   }
 
   await ctx.reply(
-    '✨ <b>PXLS — AI Image & Video Generator</b>\n\n'
+    '✨ <b>PXLS — AI Image & Video Generator (v2)</b>\n\n'
     + 'Генерируй изображения и видео с помощью нейросетей прямо в Telegram.\n\n'
     + `🎁 Бонус: ${SIGNUP_BONUS} PX за регистрацию\n`
     + (ref && !existingUser ? `👥 Вас пригласил пользователь!\n` : ''),
